@@ -23,17 +23,18 @@ body {
     cursor: pointer;
 }
 
-.js-result {
+.result {
     font-size: 25px;
     font-weight: bold;
     margin-top: 50px;
 }
 
-.js-score {
-    margin-top: 50px;
+.score {
+    margin-top: 60px;
 }
 
-.reset-score-button {
+.reset-score-button,
+.auto-play-button {
     background-color: white;
     border: none;
     font-size: 15px;

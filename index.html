@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <p class="title">Rock Paper Scissors</p>
-    <button onclick="playerMove = 'Rock';
-			generateRandomNumber('Rock', 'Scissors', 'Paper');" class="move-button">
-        <img src="Rock-emoji.png" class="move-icon"></button>
-    <button onclick="playerMove = 'Paper';
-			generateRandomNumber('Paper', 'Rock', 'Scissors');" class="move-button">
-        <img src="Paper-emoji.png" class="move-icon"></button>
-    <button onclick="playerMove = 'Scissors';
-			generateRandomNumber('Scissors', 'Paper', 'Rock');" class="move-button">
-        <img src="Scissors-emoji.png" class="move-icon"></button>
+    <button onclick="
+      playGame('rock');
+    " class="move-button">
+        <img src="rock-emoji.png" class="move-icon">
+    </button>
 
-    <p class="js-result"></p>
+    <button onclick="
+      playGame('paper');
+    " class="move-button">
+        <img src="paper-emoji.png" class="move-icon">
+    </button>
+
+    <button onclick="
+      playGame('scissors');
+    " class="move-button">
+        <img src="scissors-emoji.png" class="move-icon">
+    </button>
+
+    <p class="js-result result"></p>
     <p class="js-moves"></p>
-    <p class="js-score"></p>
+    <p class="js-score score"></p>
 
-    <button class="reset-score-button" onclick="
-		score.wins=0;
-		score.losses=0;
-		score.ties=0;
-		localStorage.removeItem('score');
-		updateScoreElement();
-		">Reset Score</button>
+    <button onclick="
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+      localStorage.removeItem('score');
+      updateScoreElement();
+    " class="reset-score-button">Reset Score</button>
+
+    <button class="auto-play-button" onclick="autoPlay();">Auto Play</button>
+
     <script src="main.js"></script>
 </body>
 
