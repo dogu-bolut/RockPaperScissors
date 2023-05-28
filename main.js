@@ -26,20 +26,39 @@ function autoPlay() {
             playGame(playerMove)
         }, 1000);
         isAutoPlaying = true;
+        document.querySelector('.auto-play-button').innerHTML = 'Stop Playing';
     } else {
         clearInterval(intervalID);
         isAutoPlaying = false;
+        document.querySelector('.auto-play-button').innerHTML = 'Auto Play';
     }
 }
+document.querySelector('.auto-play-button').addEventListener('click', () => autoPlay());
+document.querySelector('.reset-score-button').addEventListener('click', () => {
+    document.querySelector('.vertification').innerHTML = `
+        Are you sure you want to reset the score?
+        <button class="yes">Yes</button>
+        <button class="no">No</button>
+        `
+    document.querySelector('.yes').addEventListener('click', () => {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+        document.querySelector('.vertification').innerHTML = '';
+    });
+    document.querySelector('.no').addEventListener('click', () => {
+        document.querySelector('.vertification').innerHTML = '';
+    })
+});
 
 document.querySelector('.js-rock-button').addEventListener('click', () => {
     playGame('rock');
 });
-
 document.querySelector('.js-paper-button').addEventListener('click', () => {
     playGame('paper');
 });
-
 document.querySelector('.js-scissors-button').addEventListener('click', () => {
     playGame('scissors');
 });
@@ -51,6 +70,19 @@ document.body.addEventListener('keydown', (event) => {
         playGame('paper');
     } else if (event.key === 's') {
         playGame('scissors');
+    } else if (event.key === 'a') {
+        autoPlay();
+    } else if (event.key === 'Backspace') {
+        document.querySelector('.vertification').innerHTML = `
+        Are you sure you want to reset the score?
+        <button class="yes">Yes</button>
+        <button class="no">No</button>
+        `
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
     }
 })
 
