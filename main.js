@@ -37,8 +37,8 @@ document.querySelector('.auto-play-button').addEventListener('click', () => auto
 document.querySelector('.reset-score-button').addEventListener('click', () => {
     document.querySelector('.vertification').innerHTML = `
         Are you sure you want to reset the score?
-        <button class="yes">Yes</button>
-        <button class="no">No</button>
+        <button class="yes btn">Yes</button>
+        <button class="no btn">No</button>
         `
     document.querySelector('.yes').addEventListener('click', () => {
         score.wins = 0;
@@ -75,8 +75,8 @@ document.body.addEventListener('keydown', (event) => {
     } else if (event.key === 'Backspace') {
         document.querySelector('.vertification').innerHTML = `
         Are you sure you want to reset the score?
-        <button class="yes">Yes</button>
-        <button class="no">No</button>
+        <button class="yes btn">Yes</button>
+        <button class="no btn">No</button>
         `
         score.wins = 0;
         score.losses = 0;
